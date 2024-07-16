@@ -45,7 +45,7 @@ class ScreenWelcome extends StatelessWidget {
                   buttonText: "Let's start",
                   onPressed: () {
                     Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => ScreenLogin()));
+                        MaterialPageRoute(builder: (context) => const ScreenLogin()));
                   },
                   color: mainColor,
                 ),

@@ -16,24 +16,18 @@ class LoginBlocBloc extends Bloc<LoginBlocEvent, LoginBlocState> {
     on<LoginBlocEvent>((event, emit) {});
     on<OnLoginButtonClickEvent>((event, emit) async {
       emit(LoginBlocLoadingState());
-
       try {
         final response =
             await ApiService().driverLogin(event.email, event.password);
-
-       
         if (response.statusCode == 200) {
           final data = jsonDecode(response.body);
           if (data['statusCode'] == 200) {
             final driver = Driver.fromJson(data['data']);
-
             emit(LoginBlocSuccesState(driver: driver));
           } else {
-            emit(LoginBlocErrorState(error: data['message']));
+            return emit(LoginBlocErrorState(error: data['message']));
           }
-
           final driver = Driver.fromJson(data['data']);
-
           emit(LoginBlocSuccesState(driver: driver));
         } else {
           emit(LoginBlocErrorState(error: 'Invalid credentials'));

@@ -57,7 +57,7 @@ class OrderList extends StatelessWidget {
                   color: Colors.black.withOpacity(0.1),
                   spreadRadius: 2,
                   blurRadius: 10,
-                  offset: Offset(6, 2), // changes position of shadow
+                  offset: const Offset(6, 2), // changes position of shadow
                 ),
               ],
             ),
@@ -171,9 +171,9 @@ class OrderList extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  Align(
+                  const Align(
                     alignment: Alignment.centerLeft,
-                    child: const Text(
+                    child: Text(
                       "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elit, Sed Do Eiusmod",
                       style: TextStyle(fontSize: 17, color: Colors.black),
                     ),

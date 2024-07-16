@@ -1,4 +1,6 @@
-import 'dart:developer';
+// ignore_for_file: depend_on_referenced_packages
+
+
 
 import 'package:bloc/bloc.dart';
 import 'package:driver_dxb/model/order_history_model.dart';
@@ -16,8 +18,7 @@ class OrderHistoryBloc extends Bloc<OrderHistoryEvent, OrderHistoryState> {
       try {
         final response = await ApiService()
             .getOrderHistoryCount(event.driverId, event.fromDate, event.toDate);
-        print(response.body);
-
+        
         if (response.statusCode == 200) {
           final data = jsonDecode(response.body);
           final orderSummary = OrderSummary.fromJson(data);
