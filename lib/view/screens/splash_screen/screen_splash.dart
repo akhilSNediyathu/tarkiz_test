@@ -17,7 +17,7 @@ class _ScreenSplashState extends State<ScreenSplash> {
     super.initState();
     Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => ScreenWelcome()),
+        MaterialPageRoute(builder: (context) =>const ScreenWelcome()),
       );
     });
   }

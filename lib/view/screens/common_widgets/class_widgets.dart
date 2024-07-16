@@ -10,14 +10,14 @@ class CustomTextField extends StatelessWidget {
     this.margin,
     this.keyboardType,
     this.obscureText = false,
-    this.minlines,
+    this.minLines,
     this.rightIcon,
-    this.maxlines,
+    this.maxLines = 1, // Ensure default value is 1
     this.validator,
   });
 
-  final int? minlines;
-  final int? maxlines;
+  final int? minLines;
+  final int? maxLines;
   final TextEditingController controller;
   final String hintText;
   final IconData? icon;
@@ -30,9 +30,11 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      maxLines: maxlines,
+      maxLines: obscureText
+          ? 1
+          : maxLines, // Set maxLines to 1 if obscureText is true
+      minLines: minLines,
       controller: controller,
-      minLines: minlines,
       validator: validator,
       keyboardType: keyboardType,
       obscureText: obscureText,
@@ -41,19 +43,19 @@ class CustomTextField extends StatelessWidget {
         labelStyle: const TextStyle(fontWeight: FontWeight.w500),
         alignLabelWithHint: true,
         border: OutlineInputBorder(
-          borderSide: BorderSide.none, // Remove border color
+          borderSide: BorderSide.none, 
           borderRadius: kradius10,
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide.none, // Remove border color
+          borderSide: BorderSide.none, 
           borderRadius: kradius10,
         ),
         errorBorder: OutlineInputBorder(
-          borderSide: BorderSide.none, // Remove border color
+          borderSide: BorderSide.none, 
           borderRadius: kradius10,
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide.none, // Remove border color
+          borderSide: BorderSide.none, 
           borderRadius: kradius10,
         ),
         filled: true,
@@ -87,7 +89,7 @@ class CustomTextField2 extends StatefulWidget {
 }
 
 class _CustomTextField2State extends State<CustomTextField2> {
-  bool isObsecure = true;
+  bool isObscure = true;
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +98,7 @@ class _CustomTextField2State extends State<CustomTextField2> {
       child: TextFormField(
         controller: widget.controller,
         keyboardType: widget.keyboardType,
-        obscureText: isObsecure,
+        obscureText: isObscure,
         validator: widget.validator,
         decoration: InputDecoration(
           labelText: widget.hintText,
@@ -104,33 +106,33 @@ class _CustomTextField2State extends State<CustomTextField2> {
           prefixIcon: widget.icon != null ? Icon(widget.icon) : null,
           suffixIcon: IconButton(
             icon: Icon(
-              isObsecure ? Icons.visibility_off : Icons.visibility,
+              isObscure ? Icons.visibility_off : Icons.visibility,
               color: Colors.grey,
             ),
             onPressed: () {
               setState(() {
-                isObsecure = !isObsecure;
+                isObscure = !isObscure;
               });
             },
           ),
           border: OutlineInputBorder(
-            borderSide: BorderSide.none, // Remove border color
+            borderSide: BorderSide.none, 
             borderRadius: kradius10,
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide.none, // Remove border color
+            borderSide: BorderSide.none, 
             borderRadius: kradius10,
           ),
           errorBorder: OutlineInputBorder(
-            borderSide: BorderSide.none, // Remove border color
+            borderSide: BorderSide.none, 
             borderRadius: kradius10,
           ),
           focusedErrorBorder: OutlineInputBorder(
-            borderSide: BorderSide.none, // Remove border color
+            borderSide: BorderSide.none, 
             borderRadius: kradius10,
           ),
           filled: true,
-          fillColor: Colors.grey[200], // Background color of the text field
+          fillColor: Colors.grey[200], 
         ),
       ),
     );

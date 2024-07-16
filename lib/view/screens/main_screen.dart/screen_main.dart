@@ -14,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  bool online = false;
+  bool online = true;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,9 @@ class _HomeScreenState extends State<HomeScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ScreenOrderHistory(model: widget.model,),
+                  builder: (context) => ScreenOrderHistory(
+                    model: widget.model,
+                  ),
                 ),
               );
             },
@@ -90,25 +92,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                 setState(() {
                                   online = !online;
                                 });
-                                print('Tapped');
                               },
                               onChanged: (bool state) {
                                 setState(() {
                                   online = state;
                                 });
-                                print('Current State: $online');
                               },
                               onDoubleTap: () {
                                 setState(() {
                                   online = !online;
                                 });
-                                print('Double Tapped');
                               },
                               onSwipe: () {
                                 setState(() {
                                   online = !online;
                                 });
-                                print('Swiped');
                               },
                             ),
                           ),
