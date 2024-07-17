@@ -9,7 +9,6 @@ import 'package:driver_dxb/view/screens/common_widgets/funtion_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
 
@@ -32,9 +31,9 @@ class _LoginFormState extends State<LoginForm> {
   void _validateForm() {
     if (_formKey.currentState?.validate() ?? false) {
       context.read<LoginBlocBloc>().add(OnLoginButtonClickEvent(
-        email: emailController.text,
-        password: passwordController.text,
-      ));
+            email: emailController.text,
+            password: passwordController.text,
+          ));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please correct the errors')),
@@ -64,7 +63,7 @@ class _LoginFormState extends State<LoginForm> {
             icon: Icons.person,
           ),
           kheight20,
-          _buildTextField(
+          _buildTextField2(
             label: 'Password',
             hintText: '******',
             controller: passwordController,
@@ -114,6 +113,28 @@ class _LoginFormState extends State<LoginForm> {
           controller: controller,
           rightIcon: icon != null ? Icon(icon, color: grey) : null,
           obscureText: isPassword,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTextField2({
+    required String label,
+    required String hintText,
+    required TextEditingController controller,
+    required FormFieldValidator<String> validator,
+    
+    bool isPassword = false,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(label, style: hintStyle),
+        kheight,
+        CustomTextField2(
+          validator: validator,
+          hintText: hintText,
+          controller: controller,
         ),
       ],
     );
