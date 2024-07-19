@@ -29,6 +29,7 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   void _validateForm() {
+    FocusScope.of(context).unfocus();
     if (_formKey.currentState?.validate() ?? false) {
       context.read<LoginBlocBloc>().add(OnLoginButtonClickEvent(
             email: emailController.text,
@@ -123,7 +124,6 @@ class _LoginFormState extends State<LoginForm> {
     required String hintText,
     required TextEditingController controller,
     required FormFieldValidator<String> validator,
-    
     bool isPassword = false,
   }) {
     return Column(

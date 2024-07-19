@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
+
 class _HomeScreenState extends State<HomeScreen> {
   bool online = true;
   @override
@@ -28,23 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.only(left: 10.0, top: 30),
                 child: Row(
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ScreenOrderHistory(
-                              model: widget.model,
-                            ),
-                          ),
-                        );
-                      },
-                      child: CircleAvatar(
-                        radius: 20,
-                        backgroundImage:
-                            NetworkImage(widget.model.profileImage),
-                      ),
-                    ),
+                    userDetailsSession(context, widget.model),
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: GestureDetector(

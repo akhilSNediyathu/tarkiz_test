@@ -1,5 +1,7 @@
+import 'package:driver_dxb/model/driver_model.dart';
 import 'package:driver_dxb/view/screens/main_screen.dart/screen_main.dart';
 import 'package:driver_dxb/view/screens/main_screen.dart/widgets.dart';
+import 'package:driver_dxb/view/screens/screen_order_history/screen_order_history.dart';
 import 'package:flutter/material.dart';
 
 class CustomTabVew extends StatelessWidget {
@@ -79,6 +81,7 @@ class NameSession extends StatelessWidget {
     );
   }
 }
+
 class BottomView extends StatelessWidget {
   const BottomView({
     super.key,
@@ -118,4 +121,23 @@ class BottomView extends StatelessWidget {
       ),
     );
   }
+}
+
+GestureDetector userDetailsSession(BuildContext context, Driver model) {
+  return GestureDetector(
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ScreenOrderHistory(
+            model: model,
+          ),
+        ),
+      );
+    },
+    child: CircleAvatar(
+      radius: 20,
+      backgroundImage: NetworkImage(model.profileImage),
+    ),
+  );
 }
