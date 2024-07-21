@@ -42,6 +42,7 @@ const Color grey = Colors.grey;
 const red = Colors.red;
 const black = Colors.black;
 
+
 const amber = Colors.amber;
 //Text styles
 const TextStyle welcomeScreenStyle =
